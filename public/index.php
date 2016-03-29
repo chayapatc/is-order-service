@@ -30,6 +30,15 @@
 		'OrderDetail' => $OrderDetail
 	]);
 
+
+	// allow origin
+	$app->add(function ($request, $response, $next) {
+	    // Use the PSR 7 $response object
+		$response = $response->withHeader('Access-Control-Allow-Origin', '*');
+
+	    return $next($request, $response);
+	});
+
 	/**
 	* Create new order
 	* @param customer_email
